@@ -1,11 +1,519 @@
 <!doctype html>
 <html>
+  <!-- 반갑다 -->
   <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/srcfile/favicon.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>database</title>
+    <title>this is choco</title>
+
+    <!-- 구글 무료 폰트 "Noto Sans KR" -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"> <!-- Noto Sans KR 폰트 -->
+    
+    <script src="/database.js" defer></script>
+    <script src="script.js" defer></script> 
   </head>
+
   <body>
-    <h1>good</h1>
-  </body>
-</html>
+        
+        <div class="wraper">
+            <div class="header"></div>
+            <div class="container">
+
+                <!-- console.log 버튼 -->
+                <button class="debugBtn">console</button>
+
+                <!-- 왼쪽 컨테이너 -->
+                <div class="selector">
+                    <!-- 언어 선택 메뉴 -->
+                    <ul class="languageMenu">
+                        <li name="ko" class="selected">한국어</li>
+                        <li name="ja">일본어</li>
+                        <li name="en">ﾠ영어ﾠ</li>
+                    </ul>
+                    <!-- 보기 메뉴 -->
+                    <ul class="folder">
+                        <span class="main" style="display:none">뒤로가기</span>
+                        <li name="all">전체 보기</li>
+                        <li name="album">앨범별 보기</li>
+                    </ul>
+                    <!-- 앨범별 노래 -->
+                    <ul class="songList">
+                        <div class="albumList" style="display:none">
+                            <ul class="hidden-children">
+                                <span>1st 앨범 〈青春のエキサイトメント〉</span>
+                                <li>憧れてきたんだ</li>
+                                <li>生きていたんだよな</li>
+                                <li>君はロックを聴かない</li>
+                                <li>マトリョーシカ</li>
+                                <li>ふたりの世界</li>
+                                <li>いつまでも</li>
+                                <li>愛を伝えたいだとか</li>
+                                <li>風のささやき</li>
+                                <li>RING DING</li>
+                                <li>ジェニファー</li>
+                                <li>漂白</li>
+                            </ul>
+                            <ul class="hidden-children">
+                                <span>2nd 앨범 〈瞬間的シックスセンス〉</span>
+                                <li>満月の夜なら</li>
+                                <li>マリーゴールド</li>
+                                <li>ら、のはなし</li>
+                                <li>二人だけの国</li>
+                                <li>プレゼント</li>
+                                <li>ひかりもの</li>
+                                <li>恋をしたから</li>
+                                <li>夢追いベンガル</li>
+                                <li>今夜このまま</li>
+                                <li>あした世界が終わるとしても</li>
+                                <li>GOOD NIGHT BABY</li>
+                                <li>from 四階の角部屋</li>
+                            </ul>
+                            <ul class="hidden-children">
+                                <span>3rd 앨범 〈おいしいパスタがあると聞いて〉</span>
+                                <li>黄昏にバカ話をしたあの日を思い出す時を</li>
+                                <li>ハルノヒ</li>
+                                <li>シガレット</li>
+                                <li>さよならの今日に</li>
+                                <li>朝陽</li>
+                                <li>裸の心</li>
+                                <li>マシマロ</li>
+                                <li>空の青さを知る人よ</li>
+                                <li>真夏の夜の匂いがする</li>
+                                <li>ポプリの葉</li>
+                                <li>チカ</li>
+                                <li>そんな風に生きている</li>
+                                <li>サラバ</li>
+                            </ul>
+                            <ul class="hidden-children">
+                                <span>4th 앨범 〈瞳へ落ちるよレコード〉</span>
+                                <li>双葉</li>
+                                <li>スーパーガール</li>
+                                <li>姿</li>
+                                <li>初恋が泣いている</li>
+                                <li>君のこゝろ</li>
+                                <li>3636</li>
+                                <li>強くなっちゃったんだ、ブルー</li>
+                                <li>桜が降る夜は</li>
+                                <li>ペルソナの記憶</li>
+                                <li>神秘の領域へ</li>
+                                <li>ハート</li>
+                                <li>インタビュー</li>
+                                <li>愛を知るまでは</li>
+                            </ul>
+                            <ul class="hidden-children">
+                                <span>5th 앨범 〈猫にジェラシー〉</span>
+                                <li>会いに行くのに</li>
+                                <li>ラッキーカラー</li>
+                                <li>ノット・オーケー</li>
+                            </ul>
+                            <ul class="hidden-children">
+                                <span>1st 미니앨범 〈tamago〉</span>
+                                <li>貴方解剖純愛歌 〜死ね〜</li>
+                                <li>分かってくれよ</li>
+                                <li>お互い様やん</li>
+                                <li>○○ちゃん</li>
+                                <li>夜行バス</li>
+                                <li>幸せになりたい</li>
+                                <li>強がりました</li>
+                                <li>ナウなヤングにバカウケするのは当たり前だのクラッ歌</li>
+                            </ul>
+                            <ul class="hidden-children">
+                                <span>2nd 미니앨범 〈憎まれっ子世に憚る〉</span>
+                                <li>どうせ死ぬなら</li>
+                                <li>19歳になりたくない</li>
+                                <li>好きって言ってよ</li>
+                                <li>泥だんごの天才いたよね</li>
+                                <li>おっぱい</li>
+                                <li>私に彼氏ができない理由</li>
+                                <li>ほろ酔い</li>
+                            </ul>
+
+                            <ul class="hidden-children">
+                                <span>인디 싱글 〈貴方解剖純愛歌 〜死ね〜〉</span>
+                                <li>貴方解剖純愛歌 〜死ね〜</li>
+                                <li>いいことしましょ</li>
+                                <li>強がりました</li>
+                            </ul>
+                            <ul class="hidden-children">
+                                <span>1st 싱글 〈生きていたんだよな〉</span>
+                                <li>生きていたんだよな</li>
+                                <li>今日の芸術</li>
+                                <li>君がいない夜を越えられやしない</li>
+                            </ul>
+                            <ul class="hidden-children">
+                                <span>2nd 싱글〈愛を伝えたいだとか〉</span>
+                                <li>愛を伝えたいだとか</li>
+                                <li>ハッピー</li>
+                                <li>MIO</li>
+                            </ul>
+                            <ul class="hidden-children">
+                                <span>3rd 싱글 〈君はロックを?かない〉</span>
+                                <li>君はロックを聴かない</li>
+                                <li>青春と青春と青春</li>
+                            </ul>
+                            <ul class="hidden-children">
+                                <span>4th 싱글 〈満月の夜なら〉</span>
+                                <li>満月の夜なら</li>
+                                <li>わかってない</li>
+                            </ul>
+                            <ul class="hidden-children">
+                                <span>5th 싱글 〈マリーゴールド〉</span>
+                                <li>マリーゴールド</li>
+                                <li>あなたのために</li>
+                            </ul>
+                            <ul class="hidden-children">
+                                <span>6th 싱글 〈今夜このまま〉</span>
+                                <li>今夜このまま</li>
+                                <li>猫</li>
+                            </ul>
+                            <ul class="hidden-children">
+                                <span>7th 싱글 〈ハルノヒ〉</span>
+                                <li>ハルノヒ</li>
+                                <li>鯉</li>
+                            </ul>
+                            <ul class="hidden-children">
+                                <span>8th 싱글 〈真夏の夜の匂いがする〉</span>
+                                <li>真夏の夜の匂いがする</li>
+                                <li>テレパしい</li>
+                            </ul>
+                            <ul class="hidden-children">
+                                <span>9th 싱글 〈空の青さを知る人よ〉</span>
+                                <li>空の青さを知る人よ</li>
+                                <li>葵</li>
+                            </ul>
+                            <ul class="hidden-children">
+                                <span>10th 싱글 〈裸の心〉</span>
+                                <li>裸の心</li>
+                                <li>ユラユラ</li>
+                            </ul>
+                            <ul class="hidden-children">
+                                <span>11st 싱글 〈愛を知るまでは/桜が降る夜は〉</span>
+                                <li>愛を知るまでは</li>
+                                <li>桜が降る夜は</li>
+                                <li>ミニスカートとハイライト</li>
+                            </ul>
+                            <ul class="hidden-children">
+                                <span>12st 싱글 〈ハート〉</span>
+                                <li>ハート</li>
+                                <li>森のくまさん</li>
+                            </ul>
+                            <ul class="hidden-children">
+                                <span>13st 싱글 〈初恋が泣いている〉</span>
+                                <li>初恋が泣いている</li>
+                                <li>皐月</li>
+                            </ul>
+                            <ul class="hidden-children">
+                                <span>14th 싱글 〈愛の花〉</span>
+                                <li>愛の花</li>
+                                <li>彼氏有無</li>
+                            </ul>
+                            <ul class="hidden-children">
+                                <span>15th 싱글 〈あのね〉</span>
+                                <li>あのね</li>
+                                <li>die die die</li>
+                            </ul>
+                            <ul class="hidden-children">
+                                <span>16th 싱글 〈会いに行くのに〉</span>
+                                <li>会いに行くのに</li>
+                                <!-- <li>ねむい</li> -->
+                            </ul>
+                        </div>
+
+                        <!-- 패치노트 -->
+                        <pre>
+　　　　　　　　　　　　　　　　8월 27일
+[ 엥? ]
+라이브 서버에서는 멀쩡했는데 사이트에선 고장난다
+                          
+[ 업데이트 ]
+1. 앨범 목록에서도 정답 제출 가능
+2. 틀릴 때까지 계속하는 1목숨 모드 추가
+3. 다음 버튼을 누르면 자동으로 
+   노래를 재생하는 자동재생 버튼 추가
+4. 인트로 0.5초 재생에서 소리가 나도록
+   노래별 시작 시간을 설정
+
+
+
+　　　　　　　　　　　　　　　　8월 25일
+[ 업데이트 ]
+1. OX 음량 동기화
+2. 이제 OX가 클릭을 막지 않음
+3. 문제를 맞추는 데 걸린 시간 표시
+4. 오디오 로딩 중에 듣기 누르면 클릭이 무시됐는데
+   이제 무시되지 않고 로딩 완료 후 재생됨
+5. 인트로 선택 시 이미 나온 노래는 나오지 않음
+
+
+
+
+　　　　　　　　　　　　　　　　8월 24일
+[ 잡담 ]
+프론트 : 하나를 알면 10가지 일을 할 수 있다
+백 : 하나를 하기 위해 100가지를 알아야 한다
+
+
+
+
+　　　　　　　　　　　　　　　　8월 23일
+[ 업데이트 ]
+1. 정답 오답 표시를 OX로 변경, 사운드 재생
+2. 듣기 버튼을 여러번 누를 시 
+   재생 시간이 뒤죽박죽인 오류 수정
+3. 다음-듣기 버튼을 빠르게 누를 때 생기는 오류 수정
+4. 제출 누르면 정답에 맞는 유튜브 링크를 줌
+5. 결과 화면에서 정답 기록을 공개
+6. 볼륨 조절 바 추가
+
+
+
+
+　　　　　　　　　　　　　　　　8월 22일
+[ 잡담 ]
+랜덤 부분 듣기는 어렵다.
+1초로 하면 '워~' 만 들리기도 하고
+일본어가 아닌 듯한 가사가 들리기도 한다
+억까가 좀 있음 ㅇㅅㅇ
+인트로 듣기도 소리가 아예 없기도 함
+
+[ 업데이트 ]
+1. 실전 플레이 페이지 80% (앨범은 안 됨)
+2. 연습하기 페이지의 정보는 돌아가기 누르면 초기화
+3. 실전 결과 공유하기
+4. 팝업 창 (바깥 부분 클릭 or 엔터 키)로 끄기
+
+[ 코드 ]
+1. 오류의 90%는 오타와 저장 미스로 발생한다.
+   악질들 >>> paly, quert, Litsener, evnet
+   
+
+
+
+　　　　　　　　　　　　　　　　8월 21일, 2차
+[ 잡담 ]
+멤브레인 키보드에서 기계식 갈축 키보드로 바꿨다.
+코드 뚜드리는 게 5.14배 맛있어졌다.
+
+디자인 정하기가 어렵다. 디자인 고민하느라
+진도 느려지면 슬프니까 디자인은 대충 하고
+마지막에 손 봐야겠다.
+
+[ 업데이트 ]
+1. 실전 입장 페이지 구축
+2. 알림창 (재활용 가능)
+  코스 선택 페이지에서 선택을 안 하면 떠요
+
+[ 코드 ]
+function log(obj){
+    for(let key in obj){
+        console.log(`${key} : ${obj[key]}`);
+}}
+이제 이 함수를 사용해 log('변수명')으로
+현재 값을 간편하게 확인할 수 있다.
+
+
+
+
+　　　　　　　　　　　　　　　　8월 21일
+[ 업데이트 ]
+1. 현재 언어를 표시
+2. 페이지 이동
+3. 노래의 중간 부분을 들려주는 랜덤Play 버튼
+
+[ 하고 싶은 것 ]
+1. 노래 섞기 애니메이션
+
+[ 코드 ]
+1. css 가상 요소 ::before를 사용해 보았다
+
+
+
+
+　　　　　　　　　　　　　　　　8월 8일
+[업데이트]
+오답/정답 시 색 변경
+같은 답은 한 번만 제출 가능
+랜덤 버튼을 누르면 초기화
+
+[코드]
+이벤트리스너의 콜백함수에는 파라미터가 
+있는 함수를 사용할 수 없다.
+element.addEventListener("click", 
+myFunctuin(a, b))   >>>   불가
+ㅣ 이건 화살표 함수나 익명 함수로 가능 ㅣ
+
+하지만 removeEventListener를 쓰려면
+기명 함수를 사용해야 한다.
+= 인수를 전달할 수 없다.
+
+찾아보다가 인수 전달을 포기하고
+인수를 풀어서 사용했다.
+뭔가 굉장히 맘에 안 든다.
+다음엔 이벤트리스너로 인수를 전달할
+상활을 만들지 말아야겠다.
+
+
+
+
+　　　　　　　　　　　　　　　　8월 7일
+/*
+나도 영어 필요성을 느낀 게
+변수나 함수 이름 정할 때마다
+영어사전 켜서 검색한다 ㅋㅋ
+*/
+
+한자를 히라가나로 변환하고 정렬했다.
+변환은 내 손으로... 했다.
+
+정답 오답 횟수를 기록한다.
+localStorage에 저장한다.
+
+템플릿 리터럴을 이용했다.
+
+c = a + b;
+"string text" + c + "%";
+
+`string text ${a + b}%`;
+
+textContent를 편하게 넣을 수 있다.
+
+
+
+
+　　　　　　　　　　　　　　　　7월 어느날
+추가된 점
+- 앨범으로 보기
+  but 아직 정답 제출은 안 된다
+- 이 화면으로 돌아오는 버튼
+- 깔끔한 글꼴 적용
+
+개선할 점  <<< 클리어 >>>
+- 앨범에서 정답 제출
+- 언어 클릭 이벤트, 앨범도 3언어로
+- 언어 옆에 화살표 등으로
+  오름/내림 표시하기
+
+
+css는 뭔가 만만하면서도 쉽지 않은
+묘한 녀석이다
+
+
+* css로 요소 없애기
+display: none
+또는
+position: absolute/fixed
+clip-path: rect(0,0,0,0)
+
+무엇이 다른가?
+전자는 스크린리더가 못 읽는다.
+후자는 개발자 도구로 확인하면
+width padding 등이 남아 있다.
+그러나 fixed라서 레이아웃에 영향은 x
+                        </pre>
+                    </ul>
+
+                </div>
+
+                <!-- 오른쪽 컨테이너 -->
+                <div class="content">
+
+                    <!-- 첫 페이지 -->
+                    <div class="mainPage">
+                        <h1>아이묭 노래 맞추기</h1>
+                        <button class="goto_gamePage">실전</button>
+                        <button class="goto_testPage">연습하기</button>
+
+                        <!-- startTime 정하기 임시
+                        <input class="testInput" type="text" value="87"/> -->
+
+                        <!-- <input clas="tInput" type="text"/>
+                        <p class="tPara"> </p>
+                        <button class="tBtn">보내기</button> -->
+                        
+                    </div>
+
+                    <!-- 선택 페이지 -->
+                    <div class="gamePage hidden-children">
+                        <h1>코스 선택</h1>
+                        <ul class="selectStarting">
+                            <li class="intro">인트로</li>
+                            <li class="random">중간부분</li>
+                        </ul>
+                        <ul class="selectTime">
+                            <li>0.5</li>
+                            <li>1</li>
+                            <li>2</li>
+                            <li>5</li>
+                        </ul>
+                        <ul class="selectRound">
+                            <li>3</li>
+                            <li>5</li>
+                            <li>10</li>
+                            <li>20</li>
+                            <li class="exception">1목숨</li>
+                        </ul>
+                        <button class="goto_playPage">시작하자</button>
+                        <!-- <div class="guidance">도움말</div> -->
+                        <button class="goto_mainPage">돌아가기</button>
+                    </div>
+
+                    <!-- 플레이 페이지 -->
+                    <div class="playPage hidden-children">
+                        <h1>노래를 듣고 맞추자</h1>
+                        <input type="range" value="40" min="5" step="5"/>
+                        <button class="autoPlayBtn">자동재생</button>
+                        <button class="playBtn">듣기</button>
+                        <button class="answerBtn">제출</button>
+                        <button class="nextBtn" disabled="">다음</button>
+                        <p class="progressPara"> </p>
+                        <p class="answerPara"> </p>
+                        <p class="resultPara"> </p>
+                        <a class="ytLink" href="" target="_blank"> </a>
+                        <button class="shareBtn hidden">공유</button>
+                        <button class="goto_mainPage">돌아가기</button>
+                    </div>
+
+                    <!-- 연습 페이지 -->
+                    <div class="testPage hidden-children">
+                        <h1>연습하기</h1>
+                        <ul class="levelSelector">
+                            <span>난이도 : 7초</span>
+                            <li hidden>7초</li>
+                            <li hidden>3초</li>
+                            <li hidden>1초</li>
+                        </ul>
+                        <button class="randomButton">Random</button>
+                        <button class="playButton">Play</button>
+                        <button class="random_playButton">랜덤Play</button>
+                        <button class="pauseButton">정답은?</button>
+                        <button class="goto_mainPage">돌아가기</button>
+                        <p class="para"> </p>
+                        <p class="para2"> </p>
+                        <pre class="scoreBoard"></pre>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- 팝업 창 -->
+            <div class="alertWindow hidden">
+                <div class="window">
+                    <p></p>
+                    <button>알겠어요</button>
+                </div>
+            </div>
+
+            <div class="OX">
+                <div class="correct hidden"></div>
+                <div class="incorrect hidden"></div>
+            </div>
+
+        </div>
+
+
+    </body>
