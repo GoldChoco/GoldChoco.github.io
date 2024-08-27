@@ -1,0 +1,486 @@
+html{
+    font-family: "Noto Sans KR", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+pre, button, ul, li, span{
+  font: inherit;
+}
+body{
+  overflow-x: hidden;
+}
+ul, ol{
+  list-style: none;
+  padding-left: 0;
+}
+ul, ol, li, button, span, h1, div{
+  user-select: none;
+}
+pre{
+   user-select: text;
+}
+/* 예외 처리 */
+.exception::after {
+  content: "" !important;
+}
+
+
+/* 버튼 */
+button{
+  transition-duration: 0.3s;
+}
+button:hover{
+  background-color: rgb(221, 221, 221);
+}
+button:active{
+  background-color: rgb(179, 179, 179);
+}
+button:disabled{
+  background-color: unset;
+}/* 버튼 */
+
+
+/* 히든 */
+.hidden{
+  position: fixed;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: rect(0 0 0 0);
+}
+
+
+/* console.log 버튼, 테스트, 임시 */
+.debugBtn{
+  position: absolute;
+  width: 29px;
+  height: 130px;
+  top: 10px;
+  left: 410px;
+  z-index: 100;
+  word-break: break-all;
+  line-height: 15px;
+}
+
+
+.container{
+  position: relative;
+  width: 1150px;
+  height: 900px;
+  margin: 0 auto;
+}
+
+.container .selector{
+  /* position: absolute;
+  left: 0; */
+  width: 400px;
+  height: 900px;
+  outline: 1px solid black;
+  overflow-y: scroll;
+  float: left;
+  background-color: white;
+}
+
+.container .selector .languageMenu{
+  position: absolute;
+  width: auto;
+  height: auto;
+  padding: 10px;
+  margin: 0;
+  outline: 1px solid red;
+  background-color: inherit;
+}
+.container .selector .languageMenu li{
+  position: relative;
+  padding: 0 10px;
+  margin: auto 25px;
+  display: inline;
+  border-radius: 8px;
+  background-color: inherit;
+  z-index: 10;
+}
+.container .selector .languageMenu li.selected::before{
+  content: " ";
+  position: absolute;
+  width: 80px;
+  height: 34px;
+  left: -8px; 
+  top: -5px;
+  background-color: rgba(255, 34, 34, 0.3);
+  border-radius: 12px;
+  z-index: -1;
+}
+.arrow{
+  position: absolute;
+  margin-left: 21px;
+  top: 5px;
+  font-size: 10px;
+}
+
+
+.container .selector .folder{
+  position: absolute;
+  top: 29px;
+  width: auto;
+  height: auto;
+  padding: 10px;
+  outline: 1px solid red;
+  background-color: inherit;
+}
+.container .selector .folder li{
+  margin: auto 51.8px;
+  display: inline;
+}
+
+.container .selector .folder .main{
+  display: inline-block;
+  width: 352px;
+  text-align: center;
+}
+
+
+
+/* songList 노래 리스트 */
+.container .selector .songList{
+  margin-top: 100px;
+}
+.container .selector .songList li{
+  width: 340px;
+  padding: 3px;
+  margin-left: 20px;
+  margin-bottom: 12px;
+  outline: 1px solid black;
+  font-size: 15px;
+  user-select: none;
+}
+.container .selector .songList li:hover{
+  outline: 3px solid black;
+}
+
+.container .selector .songList .albumList ul span{
+  position: relative;
+  display: inline-block;
+  margin: 10px 0 10px 10px;
+  font-size: 18px;
+}
+.songList .hidden-children li{
+  /* 자식 요소 숨기기 */
+  position: absolute;
+  clip-path: rect(0 0 0 0);
+}
+/* 정답 오답 표시 */
+.container .selector .songList li.wrong{
+  color: red;
+  outline: 1px solid red;
+}
+.container .selector .songList li.wrong:hover{
+  outline: 1px solid red;
+}
+.container .selector .songList li.correct{
+  color: green;
+  outline: 1px solid green;
+}
+.container .selector .songList li.correct:hover{
+  outline: 1px solid green;
+}
+/* songList 노래 리스트 */
+
+
+
+
+
+
+.container .content{
+  /* position: absolute;
+  right: 0; */
+  width: 700px;
+  height: 900px;
+  margin-left: 50px;
+  outline: 1px solid black;
+  float: left;
+}
+
+.container .content .scoreBoard{
+  position: absolute;
+  bottom: 0;
+  margin: 20px;
+  font-size: 20px;
+}
+
+
+.songList pre{ /*주저리 메모장*/
+  margin-left: 10px;
+  font-size: 17px;
+  line-height: 30px;
+}
+
+
+
+
+
+
+/* 임시용 스타일 ... 이었는데 의미 없어짐 */
+.content{
+  position: relative;}
+
+.content button{
+  display: list-item;
+  width: 200px;
+  height: 100px;
+  margin: 20px;
+  border-radius: 10px;
+  font-size: 25px;
+
+}
+.content button:active{
+  padding-top: 10px;
+}
+.content button:disabled{
+  padding-top: unset;
+}
+.content .para{
+  font-size: 30px;
+  color: white;
+  position: absolute;
+  left: 330px;
+  top: 500px;}
+.content .para2{
+  font-size: 30px;
+  position: absolute;
+  left: 330px;
+  top: 600px;}
+.content .levelSelector{
+  position: absolute;
+  top: -16px;
+  right: 5px;
+  width: 120px;
+  height: auto;
+  padding: 20px 20px 40px 20px;
+  /* outline: 1px solid black; */
+  text-align: center;}
+.content .levelSelector span{
+  display: block;
+  width: 120px;
+  height: 35px;
+  padding-top: 8px;
+  background-color: rgb(98, 214, 189);
+  outline: 1px solid black;
+  border-radius: 6px;
+}
+.content .levelSelector li{
+  margin-top: 5px;
+  background-color: rgb(158, 223, 132);
+  outline: 1px solid black;
+  border-radius: 6px;
+}
+
+/* 자식 요소 숨기기 */
+.content .hidden-children *{
+  position: absolute;
+  clip-path: rect(0 0 0 0);
+}
+.content button.goto_mainPage{
+  width: 150px;
+  height: 80px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 20px;
+}
+
+
+/* gamePage 실전 */
+.content .gamePage .selectStarting li{
+  position: relative;
+  display: inline-block;
+  width: 150px;
+  height: 50px;
+  margin: 15px;
+  font-size: 30px;
+  text-align: center;
+  outline: 1px solid black;
+}
+.content .gamePage li.selected::before{
+  content: "✓";
+  position: absolute;
+  left: 45%;
+  top: -40px;
+}
+
+
+.content .gamePage .selectTime li{
+  position: relative;
+  display: inline-block;
+  width: 90px;
+  height: 50px;
+  margin: 15px;
+  font-size: 30px;
+  text-align: center;
+  outline: 1px solid black;
+}
+.selectTime li::after{
+  content: "초";
+}
+
+.content .gamePage .selectRound li{
+  position: relative;
+  display: inline-block;
+  width: 90px;
+  height: 50px;
+  margin: 15px;
+  font-size: 30px;
+  text-align: center;
+  outline: 1px solid black;
+}
+.selectRound li::after{
+  content: "곡";
+}
+/* gamePage 실전 */
+
+
+
+
+/* palyPage */
+.playPage input[type="range"]{
+  position: absolute;
+  top: 150px;
+  left: 200px;
+  width: 100px;
+  height: auto;
+  rotate: 270deg;
+}
+.playPage .autoPlayBtn{
+  position: absolute;
+  top: 100px;
+  left: 300px;
+  width: 100px;
+  height: auto;
+  font-size: 20px;
+}
+/* palyPage */
+
+
+
+
+
+
+
+
+
+
+
+
+/* body{
+  background-color: antiquewhite;
+} */
+
+
+/* --알림창 */
+.alertWindow{
+  position: relative;
+  width: 1150px;
+  height: 900px;
+  margin: 0 auto;
+  margin-top: -900px;
+  /* display: flex;
+  justify-content: center; */
+  background-color: rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+}
+.alertWindow .window{
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 400px;
+  height: fit-content;
+  padding-bottom: 35px;
+  background-color: aliceblue;
+  outline: 3px solid black;
+  border-radius: 10px
+}
+.alertWindow .window button{
+  position: absolute;
+  right: 20px;
+  bottom: 15px;
+  border-radius: 5px;
+}
+.alertWindow .window p{
+  float: left;
+  margin: 20px;
+  font-size: 25px;
+}
+/* 알림창-- */
+
+/* --O X 표시 */
+.OX{
+  width: 1150px;
+  height: 900px;
+  margin-top: -900px;
+  pointer-events: none;
+}
+.OX .correct{
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(10, 206, 10);
+  clip-path: circle(49%);
+  mask-image: radial-gradient(circle, transparent 49%, black 50%);
+}
+.OX .incorrect{
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: red;
+  clip-path: polygon(10% 0, 50% 40%, 90% 0, 100% 10%, 60% 50%, 100% 90%, 90% 100%, 50% 60%, 10% 100%, 0 90%, 40% 50%, 0 10%);
+}
+.OX .hidden{
+  position: fixed;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: rect(0 0 0 0);
+}
+/* O X 표시-- */
+
+
+/* 가상 요소 */
+h1{
+  display: inline-block;
+  position: relative;
+  padding: 0 10px 5px 10px;
+  margin: 20px 30px;
+  background-color: white;
+}
+h1::before{
+  content: "■";
+  position: absolute;
+  z-index: -1;
+  left: -10px;
+  top: -18px;
+}
+h1::after{
+  content: "■";
+  position: absolute;
+  z-index: -1;
+  right: -10px;
+  bottom: -15px;
+}
+
+
+
+
+.albumList ul span::before{
+  content: "▶";
+  position: absolute;
+  left: -11px;
+  top: 7px;
+  font-size: 1px;
+}
