@@ -584,7 +584,7 @@ const ppPlaySong = function(){
         }, curPlayTime);
     }
     // Audio 로드 후 재생되도록
-    else if(!isPlaying && !audioLoaded){
+    else if(!isPlaying && !audioLoaded && !autoPlay){
         isPlaying = true;
         aimyon.addEventListener('loadedmetadata', ()=>{
             if(curStarting === "intro"){
