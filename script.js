@@ -587,6 +587,12 @@ const ppPlaySong = function(){
     else if(!isPlaying && !audioLoaded){
         isPlaying = true;
         aimyon.addEventListener('loadedmetadata', ()=>{
+            if(curStarting === "intro"){
+                aimyon.currentTime = findSong("code", randomNumber)["startTime"];
+            }
+            else if(curStarting === "random"){
+                aimyon.currentTime = randomPart;
+            }
             aimyon.play();
             setTimeout(() => {
                 aimyon.pause();
