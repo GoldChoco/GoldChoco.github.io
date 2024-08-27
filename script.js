@@ -99,7 +99,6 @@ window.onload = ()=>{
 // Random버튼 => correctAnswer에 랜덤값 저장
 document.querySelector(".randomButton").addEventListener("click", randomSong);
 function randomSong(){
-    console.log("yes");
     audioLoaded = false;
 
     randomNumber = getRandom(howManySongs);
