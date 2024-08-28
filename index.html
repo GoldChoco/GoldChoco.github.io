@@ -235,10 +235,17 @@
 
 [ 코드 ]
 ':root'로 스타일을 동적으로 표시했다.
-근데 살짝 번거롭디
-element.style.display = 'none';
+근데 살짝 번거로운 느낌?
 
-css
+document.documentElement.style
+.setProperty("--left", "10px")
+
+element.style.left = "10px";
+
+뭐가 다르지
+전자가 광역기고 후자가 타켓팅 느낌인가
+
+    css
 '::-webkit-scrollbar'를 사용해 보았다.
 스크롤 바가 깔끔해져서 마음에 든다.
 
