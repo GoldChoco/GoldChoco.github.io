@@ -165,9 +165,9 @@ button:disabled{
 }
 .container .selector .songList li{
   width: 340px;
-  padding: 3px;
+  padding: 9px 3px;
   margin-left: 20px;
-  margin-bottom: 12px;
+  margin-top: 1px;
   outline: 1px solid black;
   font-size: 15px;
   user-select: none;
