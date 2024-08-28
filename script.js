@@ -1,5 +1,5 @@
 /*
-
+ 
 [자바 스크립트 상식 사전]
 Audio => s   /   setTimeout => ms
 
