@@ -326,6 +326,8 @@ function folderEvent(f){
     f.setAttribute("style", "display:none");
     }
     mainFolder.removeAttribute("style");
+    // 스크롤 상단으로
+    document.querySelector(".selector").scrollTo(0, 0);
 }
 
 
@@ -354,6 +356,8 @@ mainFolder.addEventListener("click", ()=>{
     }
     // 메인화면 콘텐츠
     patchNote.removeAttribute("style");
+    // 스크롤 상단으로
+    document.querySelector(".selector").scrollTo(0, 0);
 });
 
 
@@ -836,6 +840,12 @@ const popAlertWindow = function(p){
 
 
     // --OX 표시
+const elementO = document.querySelector(".OX .correct")
+const elementX = document.querySelector(".OX .incorrect")
+const audioO = new Audio;
+const audioX = new Audio;
+audioO.src="/sourceFile/Sound_correct.mp3"
+audioX.src="/sourceFile/Sound_incorrect.mp3"
 const popOX = function(answer){
     // 다음 버튼 누르면 바로 사라지기
     if(answer === "next"){
@@ -846,15 +856,20 @@ const popOX = function(answer){
         clearTimeout(oxtimeout);
         return;
     }
-
-    let ox;
-    const sound = new Audio;
-    answer === "o" ? ox = document.querySelector(".OX .correct") : ox= document.querySelector(".OX .incorrect");
-    answer === "o" ? sound.src="/sourceFile/Sound_correct.mp3" : sound.src="/sourceFile/Sound_incorrect.mp3";
-    sound.volume = curVolume;
-    sound.play()
-    ox.classList.remove("hidden");
-    oxtimeout = setTimeout(()=>{ox.classList.add("hidden")}, 1500);
+    if(answer === "o"){
+        elementO.classList.remove("hidden")
+        audioO.volume = curVolume;
+        audioO.play();
+    }
+    else if(answer === "x"){
+        elementX.classList.remove("hidden")
+        audioX.volume = curVolume;
+        audioX.play();
+    }
+    oxtimeout = setTimeout(()=>{
+        elementO.classList.add("hidden")
+        elementX.classList.add("hidden")
+    }, 1000);
 }
     // OX 표시--
 
