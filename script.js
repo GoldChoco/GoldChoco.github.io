@@ -121,7 +121,7 @@ function randomSong(){
     aimyon.addEventListener('loadedmetadata', () => {
         randomPart = Math.floor(aimyon.duration - getRandom(aimyon.duration));
         audioLoaded = true;
-        if(autoPlay) ppPlaySong();
+        if(autoPlay && curPage !== "testPage") ppPlaySong();
     }, {once:true});
 }
 
