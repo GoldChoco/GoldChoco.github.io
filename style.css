@@ -72,8 +72,8 @@ button:disabled{
 }
 
 .container .selector{
-  /* position: absolute;
-  left: 0; */
+  /* position: relative; */
+  /* left: 0; */
   width: 400px;
   height: 900px;
   outline: 1px solid black;
@@ -81,24 +81,38 @@ button:disabled{
   float: left;
   background-color: white;
 }
-
+.container .selector::-webkit-scrollbar{
+  width: 3px;
+  height: 0;
+}
+.container .selector::-webkit-scrollbar-thumb{
+  background-color: green;
+}
+.container .selector::-webkit-scrollbar-track{
+  background-color: rgba(206, 200, 200, 0.863);
+}
+.container .selector::-webkit-scrollbar-button:vertical:decrement{
+  height: 90px;
+}
 .container .selector .languageMenu{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   position: absolute;
-  width: auto;
+  width: 380px;
   height: auto;
   padding: 10px;
   margin: 0;
   outline: 1px solid red;
-  background-color: inherit;
+  background-color: white;
+  z-index: 1;
 }
 .container .selector .languageMenu li{
   position: relative;
   padding: 0 10px;
-  margin: auto 25px;
-  display: inline;
+  margin: 0 auto;
   border-radius: 8px;
-  background-color: inherit;
-  z-index: 10;
+  background-color: rgb(255, 255, 255);
+  /* z-index: 1; */
 }
 .container .selector .languageMenu li.selected::before{
   content: " ";
@@ -120,17 +134,21 @@ button:disabled{
 
 
 .container .selector .folder{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   position: absolute;
   top: 29px;
-  width: auto;
+  width: 380px;
   height: auto;
   padding: 10px;
   outline: 1px solid red;
   background-color: inherit;
+  z-index: 5;
 }
 .container .selector .folder li{
-  margin: auto 51.8px;
-  display: inline;
+  margin: 0 auto;
+  /* margin: auto 51.8px;
+  display: inline; */
 }
 
 .container .selector .folder .main{
