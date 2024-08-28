@@ -92,6 +92,11 @@ window.onload = ()=>{
     // 자동재생
     autoPlay = localStorage.getItem("autoPlay") === "true" ? true : false;
     ppAutoPlayBtn.innerText = autoPlay === true ? "자동재생ON" : "자동재생OFF";
+    // 결과창 위치 불러오기
+    resultWindowPosition = JSON.parse(localStorage.getItem("resultWindowPosition"));
+    if(!resultWindowPosition){resultWindowPosition={X:"834px", Y:"265px"}}
+    document.documentElement.style.setProperty("--resultWindow-left", resultWindowPosition.X);
+    document.documentElement.style.setProperty("--resultWindow-top", resultWindowPosition.Y);
 }
 
 
@@ -420,6 +425,7 @@ for(const t of backBtns){
         else if(t.parentElement.classList.contains("playPage")){
             ppBackBtn();
             ppAnswerArr = [];
+            resultWindow.classList.add("hidden");
         }
     });
     
@@ -526,6 +532,7 @@ const ppProgressPara = document.querySelector(".playPage .progressPara");
 const ppResultPara = document.querySelector(".playPage .resultPara");
 const ppYtLink = document.querySelector(".playPage .ytLink");
 const ppAutoPlayBtn = document.querySelector(".autoPlayBtn");
+const resultWindowPara = document.querySelector(".resultWindow div span");
 
 let ppAnswerArr = []; // 문제의 정답, 겸 중복 방지
 let ppSubmitArr = []; // 유저의 답
@@ -555,6 +562,7 @@ const enterPlayPage = function(){
     ppNextBtn.innerText = "다음";
     ppShareBtn.classList.add("hidden");
     gameOver = false;
+    resultWindowPara.innerText = " ";
     // 진행도 표시
     ppProgressPara.innerText = `${curProgress}/${getCurRound()}`
     // 리스트 컨트롤
@@ -689,30 +697,32 @@ ppNextBtn.addEventListener("click", (evnet)=>{
         ppNextBtn.setAttribute("disabled", " ");
         ppResultPara.innerText = 
 `결과는 ~~~ 연속 ${ppAnswerO}문제 정답!
-걸린 시간 : ${elapsedTime/1000}초
-
-${ppResult}`;}
-
-        
-        else{// 진행도에 따른 컨트롤
-            if(curProgress === curRound){// 마지막에 버튼 변화
-                evnet.target.innerText = "결과 보기";
-            }
-            if(curProgress > curRound){// 종료
-                ppAnswerArr = [];
-                ppShareBtn.classList.remove("hidden");
-                ppResultPara.innerText = 
+걸린 시간 : ${elapsedTime/1000}초`;
+        resultWindowPara.innerText = ppResult;
+        resultWindow.classList.remove("hidden");
+    }
+    // 정해진 라운드 종료
+    else{
+        // 진행도에 따른 컨트롤
+        if(curProgress === curRound){// 마지막에 버튼 변화
+            evnet.target.innerText = "결과 보기";
+        }
+        if(curProgress > curRound){// 종료
+            ppAnswerArr = [];
+            ppShareBtn.classList.remove("hidden");
+            ppResultPara.innerText = 
 `결과는 ~~~ ${curRound}문제 중 ${ppAnswerO}문제 정답!
-걸린 시간 : ${elapsedTime/1000}초
-
-${ppResult}`;}
-
-            else{// 진행
-                randomSong();
-                ppAnswerBtn.removeAttribute("disabled");
-                ppProgressPara.innerText = `${curProgress}/${getCurRound()}`
-            }
-}})
+걸린 시간 : ${elapsedTime/1000}초`;
+            resultWindowPara.innerText = ppResult;
+            resultWindow.classList.remove("hidden");
+        }
+        else{// 진행
+            randomSong();
+            ppAnswerBtn.removeAttribute("disabled");
+            ppProgressPara.innerText = `${curProgress}/${getCurRound()}`
+        }
+    }
+})
 
 // 뒤로가기 버튼
 const ppBackBtn = function(){
@@ -807,7 +817,31 @@ ppAutoPlayBtn.addEventListener("click", (event)=>{
 
 
 
+    // --reusltWindow
+const resultWindow = document.querySelector(".resultWindow");
+const computedStyle = window.getComputedStyle(resultWindow);
+let resultWindowPosition = {}
+let targetX;
 
+const mouseMove = function(event){
+    document.documentElement.style.setProperty("--resultWindow-left", `${event.clientX - targetX}px`);
+    document.documentElement.style.setProperty("--resultWindow-top", `${event.clientY - targetY}px`);
+}
+resultWindow.addEventListener("mousedown", (event)=>{
+    if(event.target === event.currentTarget){
+        targetX = event.clientX - parseInt(computedStyle.getPropertyValue("left"));
+        targetY = event.clientY - parseInt(computedStyle.getPropertyValue("top"));
+        window.addEventListener("mousemove", mouseMove);
+    }
+})
+window.addEventListener("mouseup", (event)=>{
+    window.removeEventListener("mousemove", mouseMove);
+    resultWindowPosition.X = computedStyle.getPropertyValue("left");
+    resultWindowPosition.Y = computedStyle.getPropertyValue("top");
+    localStorage.setItem("resultWindowPosition", JSON.stringify(resultWindowPosition));
+})
+
+    // reusltWindow--
 
 
 
