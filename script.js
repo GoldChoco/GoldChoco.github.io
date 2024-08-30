@@ -1,7 +1,8 @@
 /*
- 
+
 [자바 스크립트 상식 사전]
 Audio => s   /   setTimeout => ms
+함수는 stringify 불가능
 
 [기타 상식]
 유튜브 시작 시간 링크는 정수만 가능, 소수점을 입력하면 처음부터.
@@ -55,7 +56,7 @@ let curPage = "mainPage"; //mainPage testPage gamePage playPage
 
 let curStarting; //intro random
 let curPlayTime; //500 1000 2000 5000
-let curRound; //3 5 10 20
+let curRound; //3 5 10 20 5140
 
 let curAnswer;
 
@@ -97,6 +98,11 @@ window.onload = ()=>{
     if(!resultWindowPosition){resultWindowPosition={X:"834px", Y:"265px"}}
     document.documentElement.style.setProperty("--resultWindow-left", resultWindowPosition.X);
     document.documentElement.style.setProperty("--resultWindow-top", resultWindowPosition.Y);
+    // 최고 기록 불러오기
+    if(localStorage.getItem("highScores")){
+        highScores = JSON.parse(localStorage.getItem("highScores"));
+        highScores.getScore = new Function("return " + highScores.getScore)();
+    }
 }
 
 
@@ -450,9 +456,14 @@ const gotoPage = function(e){
         randomSong();
     }
 
-    // 실전 시작하자 버튼
+    // 시작하자 버튼
     if(str === "playPage"){
         enterPlayPage();
+    }
+
+    // 실전 버튼
+    if(str === "gamePage"){
+        showHighScore();
     }
 }
 
@@ -470,6 +481,8 @@ for(const e of startings){
         curStarting = e.attributes[0].value;
         e.classList.add("selected");
         
+        showHighScore();
+
         // if(e.classList.contains("intro")){
         //     curStarting = "intro";
         // }
@@ -489,6 +502,8 @@ for(const e of times){
         e.classList.add("selected");
 
         curPlayTime = Number(e.innerText) * 1000;
+        
+        showHighScore();
     })
 }
 
@@ -502,6 +517,8 @@ for(const e of rounds){
         e.classList.add("selected");
 
         curRound = e.innerText === "1목숨" ? 5140 : Number(e.innerText);
+
+        showHighScore();
     })
 }
 
@@ -517,6 +534,22 @@ goto_playPage.addEventListener("click", (event)=>{
     }
 })
 
+// 최고 기록 표시
+const highScorePara = document.querySelector(".highScorePara");
+const showHighScore = function(){
+    if(curStarting && curPlayTime && curRound){
+        const score = highScores.getScore(curStarting, curPlayTime, curRound);
+        if(score["elapsedTime"] === 0){
+            highScorePara.innerText = `최고 기록 : 기록 없음`;
+        }
+        else{
+            let correct = curRound !==5140 ? `${score["correct"]}/${curRound}` : `${score["correct"]}곡 연속`;
+            highScorePara.innerText = 
+`최고 기록 : ${correct}, ${score["elapsedTime"]/1000}초`;
+                }
+        }
+        
+}
     // gamePage--
 
 
@@ -543,7 +576,7 @@ let ppAnswerX = 0; // 오답 수
 let ppResult = ``; // 결과 텍스트
 let seikaiLink; // 유튜브 링크
 let curVolume = 0.4; // 0 ~ 1
-let elapsedTime;
+let elapsedTime; // 걸린 시간
 let timeoutId; // 듣기 재생 컨트롤
 let gameOver; // 1목숨 종료
 let autoPlay // 자동재생
@@ -625,6 +658,7 @@ ppAnswerBtn.addEventListener("click", (evnet)=>{
         //마지막 문제일 경우 시간 측정
         if(curProgress >= curRound){
             elapsedTime = Date.now() - gameStartTime;
+            setHighScore();
         }
         // 정답 비교
         if(findSong(curLang, curAnswer.textContent)["code"] == randomNumber){
@@ -638,6 +672,7 @@ ppAnswerBtn.addEventListener("click", (evnet)=>{
                 elapsedTime = Date.now() - gameStartTime;
                 gameOver = true;
                 ppNextBtn.innerText = "결과 보기";
+                setHighScore();
             }
         }
         // 리스트 클릭 이벤트 제거
@@ -800,16 +835,31 @@ ppAutoPlayBtn.addEventListener("click", (event)=>{
         localStorage.setItem("autoPlay", true)
     }
 })
+
+// 최고 기록 저장
+const setHighScore = function(){
+    const highScore = highScores.getScore(curStarting, curPlayTime, curRound);
+    
+    console.log(highScore["elapsedTime"]);
+    console.log(elapsedTime);
+    // 최고 기록과 비교
+    if(highScore["correct"] < ppAnswerO){ // 저장
+        highScores.getScore(curStarting, curPlayTime, curRound, ppAnswerO, elapsedTime);
+        highScores.getScore = highScores.getScore.toString();
+        localStorage.setItem("highScores", JSON.stringify(highScores));
+        highScores.getScore = new Function("return " + highScores.getScore)();
+    }
+    else if(highScore["correct"] === ppAnswerO){ // 기록 동일, 시간으로 비교
+        if(highScore["elapsedTime"] > elapsedTime || highScore["elapsedTime"] === 0){
+            highScores.getScore(curStarting, curPlayTime, curRound, ppAnswerO, elapsedTime);
+            highScores.getScore = highScores.getScore.toString();
+            localStorage.setItem("highScores", JSON.stringify(highScores));
+            highScores.getScore = new Function("return " + highScores.getScore)();
+        }
+    }
+    else{}
+}
     // playPage--
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1050,15 +1100,14 @@ const debugBtn = document.querySelector(".debugBtn");
 debugBtn.addEventListener("click", ()=>{
     popAlertWindow(
     `변수 현황
-    ${getlog({gameStartTime})}
-    ${getlog({ppAnswerArr})}
-    ${getlog({randomPart})}
+    ${getlog({curStarting})}
+    ${getlog({curPlayTime})}
     ${getlog({curRound})}
-    ${getlog({autoPlay})}
     `);
-    // randomSong();
-    console.log(getRandom(100));
-})
+    
+    console.log(highScores);
+});
+
 function log(obj){
     for(let key in obj){
         console.log(`${key} : ${obj[key]}`);
