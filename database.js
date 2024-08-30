@@ -1,3 +1,301 @@
+let highScores = {
+    score1: {
+        starting: "intro",
+        playTime: 500,
+        round: 3,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score2: {
+        starting: "intro",
+        playTime: 500,
+        round: 5,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score3: {
+        starting: "intro",
+        playTime: 500,
+        round: 10,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score4: {
+        starting: "intro",
+        playTime: 500,
+        round: 20,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score5: {
+        starting: "intro",
+        playTime: 500,
+        round: 5140,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score6: {
+        starting: "intro",
+        playTime: 1000,
+        round: 3,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score7: {
+        starting: "intro",
+        playTime: 1000,
+        round: 5,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score8: {
+        starting: "intro",
+        playTime: 1000,
+        round: 10,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score9: {
+        starting: "intro",
+        playTime: 1000,
+        round: 20,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score10: {
+        starting: "intro",
+        playTime: 1000,
+        round: 5140,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score11: {
+        starting: "intro",
+        playTime: 2000,
+        round: 3,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score12: {
+        starting: "intro",
+        playTime: 2000,
+        round: 5,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score13: {
+        starting: "intro",
+        playTime: 2000,
+        round: 10,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score14: {
+        starting: "intro",
+        playTime: 2000,
+        round: 20,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score15: {
+        starting: "intro",
+        playTime: 2000,
+        round: 5140,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score16: {
+        starting: "intro",
+        playTime: 5000,
+        round: 3,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score17: {
+        starting: "intro",
+        playTime: 5000,
+        round: 5,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score18: {
+        starting: "intro",
+        playTime: 5000,
+        round: 10,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score19: {
+        starting: "intro",
+        playTime: 5000,
+        round: 20,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score20: {
+        starting: "intro",
+        playTime: 5000,
+        round: 5140,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score21: {
+        starting: "random",
+        playTime: 500,
+        round: 3,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score22: {
+        starting: "random",
+        playTime: 500,
+        round: 5,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score23: {
+        starting: "random",
+        playTime: 500,
+        round: 10,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score24: {
+        starting: "random",
+        playTime: 500,
+        round: 20,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score25: {
+        starting: "random",
+        playTime: 500,
+        round: 5140,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score26: {
+        starting: "random",
+        playTime: 1000,
+        round: 3,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score27: {
+        starting: "random",
+        playTime: 1000,
+        round: 5,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score28: {
+        starting: "random",
+        playTime: 1000,
+        round: 10,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score29: {
+        starting: "random",
+        playTime: 1000,
+        round: 20,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score30: {
+        starting: "random",
+        playTime: 1000,
+        round: 5140,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score31: {
+        starting: "random",
+        playTime: 2000,
+        round: 3,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score32: {
+        starting: "random",
+        playTime: 2000,
+        round: 5,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score33: {
+        starting: "random",
+        playTime: 2000,
+        round: 10,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score34: {
+        starting: "random",
+        playTime: 2000,
+        round: 20,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score35: {
+        starting: "random",
+        playTime: 2000,
+        round: 5140,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score36: {
+        starting: "random",
+        playTime: 5000,
+        round: 3,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score37: {
+        starting: "random",
+        playTime: 5000,
+        round: 5,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score38: {
+        starting: "random",
+        playTime: 5000,
+        round: 10,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score39: {
+        starting: "random",
+        playTime: 5000,
+        round: 20,
+        correct: 0,
+        elapsedTime: 0
+    },
+    score40: {
+        starting: "random",
+        playTime: 5000,
+        round: 5140,
+        correct: 0,
+        elapsedTime: 0
+    },
+    getScore: function(starting, playTime, round, correct, elapsedTime){
+        let target;
+        for(key in this){
+            if(this[key]["starting"] === starting && this[key]["playTime"] === playTime && this[key]["round"] === round){
+                target =  this[key];
+            }
+        }
+        if(!elapsedTime){
+            return target;
+        }
+        else{
+            target["correct"] = correct;
+            target["elapsedTime"] = elapsedTime;
+        }
+    }
+}
+
 const song0 = {
     code: 0,
     startTime: 0.1,
