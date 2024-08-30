@@ -17,6 +17,9 @@ ul, ol{
 ul, ol, li, button, span, h1, div{
   user-select: none;
 }
+li{
+  cursor: pointer;
+}
 pre{
    user-select: text;
 }
@@ -29,6 +32,7 @@ pre{
 /* 버튼 */
 button{
   transition-duration: 0.3s;
+  cursor: pointer;
 }
 button:hover{
   background-color: rgb(221, 221, 221);
@@ -151,10 +155,12 @@ button:disabled{
   display: inline; */
 }
 
+/* 리스트 뒤로가기 */
 .container .selector .folder .main{
   display: inline-block;
   width: 352px;
   text-align: center;
+  cursor: pointer;
 }
 
 
@@ -181,6 +187,7 @@ button:disabled{
   display: inline-block;
   margin: 10px 0 10px 10px;
   font-size: 18px;
+  cursor: pointer;
 }
 .songList .hidden-children li{
   /* 자식 요소 숨기기 */
