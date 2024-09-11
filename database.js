@@ -1090,7 +1090,7 @@ const song87 = {
 };
 const song88 = {
     code: 88,
-    startTime: 0.55,
+    startTime: 0.2,
     link: "https://youtu.be/NHMp5kNABps?si=sEw0LKisjrFPM98c",
     ko: "나에게 보여줘",
     ja: "私に見せてよ",
@@ -1117,7 +1117,7 @@ const song90 = {
 };
 const song91 = {
     code: 91,
-    startTime: 0.55,
+    startTime: 0.95,
     link: "https://youtu.be/CfCg2CZHl0Y?si=-RMJ9bwqq27YmJEO",
     ko: "가짜",
     ja: "偽者",
@@ -1135,7 +1135,7 @@ const song92 = {
 };
 const song93 = {
     code: 93,
-    startTime: 0.55,
+    startTime: 1.25,
     link: "https://youtu.be/T4rS8-vz94o?si=ah4JtI7nqdJex_FY",
     ko: "자라메",
     ja: "ざらめ",
@@ -1144,7 +1144,7 @@ const song93 = {
 };
 const song94 = {
     code: 94,
-    startTime: 0.55,
+    startTime: 0,
     link: "https://youtu.be/DtGw33O-xBg?si=Ws0_yzAsuwholIxW",
     ko: "고양이에게 질투",
     ja: "猫にジェラシー",
@@ -1153,7 +1153,7 @@ const song94 = {
 };
 const song95 = {
     code: 95,
-    startTime: 0.55,
+    startTime: 2,
     link: "https://youtu.be/Oz38o2yhYck?si=RnNOJC86AjmMV1wY",
     ko: "졸려",
     ja: "ねむい",
